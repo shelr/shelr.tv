@@ -69,4 +69,45 @@ describe User do
       end
     end
   end
+
+  describe "#comments_for_records" do
+    it "should return comments for record" do
+      commentable = create(:record, user: subject)
+      commentable.comments << create(:comment)
+      Comment.for('record', commentable.id).should == subject.comments_for_records
+    end
+
+    it "should return comments for all records" do
+      comments = []
+
+      2.times do
+        commentable = create(:record, user: subject)
+        commentable.comments << create(:comment)
+        comments += Comment.for('record', commentable.id)
+      end
+
+      comments.each { |comment|  subject.comments_for_records.should include(comment) }
+    end
+
+    it "should return comment in reversed order" do
+      comments = []
+
+      2.times do |i|
+        commentable = create(:record, user: subject)
+        comment = create(:comment)
+        comment.updated_at = Time.now + i * 100
+        commentable.comments << comment
+        comments += Comment.for('record', commentable.id)
+      end
+
+      comments.reverse.should == subject.comments_for_records
+    end
+
+    it "should add methods to array for kaminari" do
+      commentable = create(:record, user: subject)
+      commentable.comments << create(:comment)
+      comments = subject.comments_for_records
+      comments.should respond_to(:current_page)
+    end
+  end
 end

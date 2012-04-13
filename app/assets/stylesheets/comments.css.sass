@@ -3,13 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import mixins
+@import "compass/css3/border-radius"
 
 .comment-form
   +wrap
-  width: 600px
   text-align: left
   textarea
-    width: 590px
+    +border-top-radius(0)
+    +border-bottom-radius(5px)
+    width: 790px
     height: 50px
   .login
     text-align: center
@@ -19,12 +21,10 @@
 
 h2.comm
   +wrap
-  width: 600px
 
 .comments
   +wrap
   +shadow
-  width: 600px
   background: #E0EAF8
   .comment
     display: block
@@ -47,3 +47,7 @@ h2.comm
       text-align: center
     .body
       margin-left: 100px
+    .updated_at
+      float: right
+      position: relative
+      top: 50px

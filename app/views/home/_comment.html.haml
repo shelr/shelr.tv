@@ -1,0 +1,6 @@
+.comment{ id: dom_id(comment) }
+  .badge
+    .avatar= image_tag(comment.user.avatar_url(50))
+    .nick= link_to(comment.user.nickname, comment.user)
+  .body= comment_link(comment, sanitize(comment.body))
+  .updated_at= comment_link(comment, l(comment.updated_at, format: :short))

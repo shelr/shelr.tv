@@ -1,0 +1,5 @@
+.dashboard.comments
+  - @comments.each do |comment|
+    = render 'comment', comment: comment
+
+= paginate @comments

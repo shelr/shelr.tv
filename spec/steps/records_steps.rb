@@ -62,4 +62,9 @@ steps_for :records do
   step "I visit :title record page with access key" do |title|
     visit record_path @_records[title], access_key: @_records[title].access_key
   end
+
+  step "I am the owner of :title record" do |title|
+    @_records[title].user = User.where(email: 'self@antono.info').first
+    @_records[title].save
+  end
 end

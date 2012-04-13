@@ -22,12 +22,3 @@ Feature: Comments
     When I visit "/records" page
     And I click link "hello world"
     Then I should not see comment form
-
-  Scenario: submiting comments
-    Given I signed in
-    When I visit "/records" page
-    And I click link "hello world"
-    Then I should see comment form
-    When I fill in "c00l screencast!" into comment form
-    And I submit comment form
-    Then I should see comment with body "c00l screencast"

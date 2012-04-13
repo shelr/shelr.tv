@@ -12,9 +12,10 @@ Shelr::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'users#authenticate'
 
-  match '/logout' => 'users#logout', as: 'logout'
-  match '/login'  => 'users#login', as: 'login'
-  match '/about'  => 'home#about', as: 'about'
+  match '/logout'    => 'users#logout',   as: 'logout'
+  match '/login'     => 'users#login',    as: 'login'
+  match '/about'     => 'home#about',     as: 'about'
+  match '/dashboard' => 'home#dashboard', as: 'dashboard'
 
   match '/opensearch.xml'  => 'home#opensearch', as: 'opensearch'
 

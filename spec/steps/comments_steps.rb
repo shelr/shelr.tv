@@ -41,4 +41,21 @@ steps_for :comments do
       page.should have_content body
     end
   end
+
+  step "record :record has following comments" do |record, table|
+    @_comments ||= []
+    @_the_record = @_records[record]
+    table.hashes.each do |hash|
+      comment = @_the_record.comments.build(body: hash['body'])
+      comment.user = create(:user, nickname: hash['user'])
+      comment.save
+    end
+    @_comments << @_the_record.reload.comments
+  end
+
+  step "I click on the first comment" do
+    within ".comments:first-child" do
+      find('.body').click
+    end
+  end
 end

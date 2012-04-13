@@ -27,3 +27,7 @@ end
 step "I should not see :text" do |text|
   page.should_not have_content text
 end
+
+step "I should be on :path page" do |path|
+  page.current_url.should match(path)
+end
