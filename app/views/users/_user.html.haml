@@ -14,7 +14,7 @@
       - if record.related_url.present?
         .desc
           %strong Read Also
-          .long= link_to record.related_url
+          .long= link_to record.related_url, record.related_url
     .desc
       %strong Statistics
       - anon_count = @record.views(:anonymous)

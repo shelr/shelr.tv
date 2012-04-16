@@ -61,6 +61,9 @@ VT.Player.prototype.initSpeedControl = function() {
   });
 }
 
+VT.Player.prototype.jumpTo = function(position) {
+}
+
 VT.Player.prototype.initProgress = function() {
   this.progress = this.el.find('.progress');
   this.progressBar = this.progress.find('.bar');

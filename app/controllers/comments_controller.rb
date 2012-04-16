@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
   def commentable
     params.each do |name, value|
       if name =~ /(.+)_id$/ and COMMENTABLES.include?($1)
-        return $1.classify.constantize.find(value)
+        return "#{$1.classify}Decorator".constantize.find(value)
       end
     end
     nil

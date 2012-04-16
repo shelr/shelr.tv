@@ -9,9 +9,9 @@ class RecordsController < ApplicationController
   def index
     @query = Record.desc(:created_at).without(:typescript, :timing).visible_by(current_user)
     if params[:tags]
-      @records = @query.where(:tags.in => params[:tags]).page(params[:page])
+      @records = RecordDecorator.decorate(@query.where(:tags.in => params[:tags]).page(params[:page]))
     else
-      @records = @query.page(params[:page])
+      @records = RecordDecorator.decorate(@query.page(params[:page]))
     end
     respond_with @records
   end
@@ -84,10 +84,11 @@ class RecordsController < ApplicationController
 
   def find_record
     if params[:access_key].present?
-      @record = Record.priv.where(access_key: params[:access_key]).find(params[:id])
+      @record = RecordDecorator.decorate(Record.priv.where(access_key: params[:access_key]).find(params[:id]))
     else
-      @record = Record.visible_by(current_user).find(params[:id])
+      @record = RecordDecorator.decorate(Record.visible_by(current_user).find(params[:id]))
     end
+
   rescue Mongoid::Errors::DocumentNotFound
     render :no_such_record
   end

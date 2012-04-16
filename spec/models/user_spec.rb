@@ -52,24 +52,6 @@ describe User do
     end
   end
 
-  describe "#avatar_url(size)" do
-    context "when user is Anonymous" do
-      it "should return anonymous.png" do
-        subject.nickname = 'Anonymous'
-        subject.avatar_url("100x100")
-          .should == '/assets/avatars/anonymous-100x100.png'
-      end
-    end
-
-    context "when email is blank" do
-      it "should return default avatar" do
-        subject.email = ""
-        subject.avatar_url("100x100")
-          .should == "/assets/avatars/default-100x100.png"
-      end
-    end
-  end
-
   describe "#comments_for_records" do
     it "should return comments for record" do
       commentable = create(:record, user: subject)

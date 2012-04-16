@@ -7,6 +7,8 @@ gem 'haml-rails'
 gem 'rdiscount'
 gem 'kaminari'
 
+gem 'draper'
+
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-twitter'

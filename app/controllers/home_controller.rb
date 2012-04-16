@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     if logged_in? && current_user.comments_for_records.any?
       redirect_to dashboard_path
     else
-      @records = Record.visible_by(current_user).desc(:created_at).page(1)
+      @records = RecordDecorator.decorate(Record.visible_by(current_user).desc(:created_at).page(1))
     end
   end
 
@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
   def dashboard
     if logged_in?
-      @comments = current_user.comments_for_records(params[:page])
+      @comments = CommentDecorator.decorate(current_user.comments_for_records(params[:page]))
     else
       redirect_to records_path
     end

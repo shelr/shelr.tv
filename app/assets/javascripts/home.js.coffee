@@ -3,5 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
+  $('.alert').alert().bind 'closed', (ev) ->
+    jQuery.cookie("saw-#{$(ev.target).attr('id')}", true);
   $('.dashboard .comment').click (ev) ->
     location.href = $(this).find('.updated_at a').attr('href')

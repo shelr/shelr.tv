@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :find_user, only: [:show, :edit, :update]
 
   def index
-    @users = User.desc(:created_at).page(params[:page]).per(10)
+    @users = UserDecorator.decorate(User.desc(:created_at).page(params[:page]).per(10))
   end
 
   def show
@@ -68,6 +68,6 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:id])
+    @user = UserDecorator.find(params[:id])
   end
 end
