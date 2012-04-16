@@ -5,7 +5,7 @@
       .btn-group
         = f.submit 'Submit', class: 'btn submit btn-primary'
     .comment-template.hidden
-      = render partial: 'comments/comment', object: Comment.new(user: current_user)
+      = render Comment.new(user: current_user)
   - else
     .login
       %h2 Please login to post comments.

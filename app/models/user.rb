@@ -55,12 +55,7 @@ class User
   end
 
   def comments_for_records(page = 1)
-    comments = []
-    records.each do |record|
-      comments += Comment.for('record', record.id)
-    end
-
-    comments.sort! { |a, b| b.updated_at <=> a.updated_at }
+    comments = records.map(&:comments).flatten.compact.sort! { |a, b| b.updated_at <=> a.updated_at }
     Kaminari.paginate_array(comments).page(page).per(20)
   end
 

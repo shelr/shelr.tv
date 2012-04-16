@@ -1,4 +1,4 @@
-.comment{ id: dom_id(comment) }
+= div_for(comment) do
   .badge
     .avatar= image_tag(comment.user.avatar_url(50))
     .nick= link_to(comment.user.nickname, comment.user)

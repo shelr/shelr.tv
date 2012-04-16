@@ -51,7 +51,7 @@
 
     %footer
       %p.follow
-        = render :partial => 'shared/twitter_follow'
+        = render 'shared/twitter_follow'
       %p.copy
         %a{ href: 'https://github.com/shelr' } Shelr is fully free software written in Ruby and Rails.
       %p.copy
@@ -67,6 +67,6 @@
         
         
 
-    = render partial: 'shared/analytics'
-    = render partial: 'shared/fork_me'
-    = render partial: 'shared/login_modal'
+    = render 'shared/analytics'
+    = render 'shared/fork_me'
+    = render 'shared/login_modal'

@@ -30,7 +30,7 @@
 %textarea.embed-code
   %iframe{ id: dom_id(record, "shelr"), src: embed_record_path(record, only_path: false), scrolling: 'no', style: 'border: 0', border: '0', width: 10 + (record.columns * 7), height: (record.rows * 13) + 32 + 10 + 30 + 10 }
 
-.social= render partial: 'shared/addthis'
+.social= render 'shared/addthis'
 
 :javascript
   jQuery(function() {

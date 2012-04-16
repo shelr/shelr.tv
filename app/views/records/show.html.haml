@@ -15,6 +15,6 @@
 .comments
   - if @record.comments.any?
     - @record.comments.each do |comment|
-      = render partial: 'comments/comment', object: comment
+      = render comment
 
-= render partial: 'comments/form', locals: { commentable: @record }
+= render 'comments/form', commentable: @record
