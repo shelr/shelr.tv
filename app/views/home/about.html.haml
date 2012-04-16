@@ -72,9 +72,16 @@
         - unless Shelr.config['team'].values.map { |v| v['id'] }.include? current_user.id.to_s
           = render 'users/user', user: current_user, role: 'Just imagine! :)'
 
+  %h2 Contributors
+  .contributors.users.team
+    = image_tag(asset_path('bar-loader.gif'), class: 'loader')
+
 
   %h2 Contribute
   %p New contributors are very welcome!
   %p
     Code is at
     %a{ href: 'http://github.com/antono/shelr.tv' } GitHub
+
+:javascript
+  $(function() { new Contributors })
