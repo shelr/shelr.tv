@@ -5,24 +5,26 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :email,         type: String,  unique: true
-  field :nickname,      type: String,  unique: false
-  field :records_count, type: Integer, default: 0
-  field :api_key,       type: String,  unique: true
-  field :twitter_name,  type: String,  unique: false
-  field :twitter_uid,   type: String,  unique: true, allow_nil: true
-  field :github_name,   type: String,  unique: false
-  field :github_uid,    type: String,  unique: true, allow_nil: true
+  field :email,              type: String,  unique: true
+  field :nickname,           type: String,  unique: false
+  field :records_count,      type: Integer, default: 0
+  field :api_key,            type: String,  unique: true
+  field :twitter_name,       type: String,  unique: false
+  field :twitter_uid,        type: String,  unique: true, allow_nil: true
+  field :github_name,        type: String,  unique: false
+  field :github_uid,         type: String,  unique: true, allow_nil: true
   field :google_oauth2_name, type: String,  unique: false
   field :google_oauth2_uid,  type: String,  unique: true, allow_nil: true
-  field :website,       type: String
-  field :bitcoin,       type: String
-  field :about,         type: String
-  field :god,           type: Boolean, default: false
+  field :open_id_name,       type: String,  unique: false
+  field :open_id_uid,        type: String,  unique: true, allow_nil: true
+  field :website,            type: String
+  field :bitcoin,            type: String
+  field :about,              type: String
+  field :god,                type: Boolean, default: false
 
   attr_accessible :nickname, :email, :website, :about, :bitcoin
 
-  validates_uniqueness_of :api_key, :twitter_uid, :github_uid, :google_oauth2_uid, allow_nil: true
+  validates_uniqueness_of :api_key, :twitter_uid, :github_uid, :google_oauth2_uid, :open_id_uid, allow_nil: true
 
   validates_length_of :nickname, maximum: 20
 

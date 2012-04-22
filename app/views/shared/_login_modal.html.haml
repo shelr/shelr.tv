@@ -3,9 +3,4 @@
     %a{ class: "close", :"data-dismiss" => "modal" } ×
     %h3 Login in less than 10 seconds
   .modal-body
-    .btn-group
-      - unless Rails.env.production?
-        %a{ href: '/auth/developer',  class: 'btn btn-large btn-primary' } Developer
-      %a{ href: '/auth/github',  class: 'btn btn-large btn-success' } GitHub
-      %a{ href: '/auth/twitter', class: 'btn btn-large btn-success' } Twitter
-      %a{ href: '/auth/google_oauth2', class: 'btn btn-large btn-success' } Google
+    .btn-group= render "users/login_buttons"

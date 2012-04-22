@@ -13,6 +13,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-openid'
 
 gem 'mongoid', '~> 2.0'
 gem 'mongoid_rails_migrations'

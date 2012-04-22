@@ -1,7 +1,9 @@
+require 'openid/store/filesystem'
+
 Rails.application.config.middleware.use OmniAuth::Builder do
-  
+
   provider :developer unless Rails.env.production?
-  
+
   provider :github, Shelr.config['github']['id'], Shelr.config['github']['secret'],
            :client_options => {:ssl => {:ca_path => '/etc/ssl/certs'} }
 
@@ -12,5 +14,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     :approval_prompt => ''
   }
 
-  # provider :openid, :store => OpenID::Store::Filesystem.new('/tmp')
+  provider :open_id, :store => OpenID::Store::Filesystem.new('/tmp')
 end
