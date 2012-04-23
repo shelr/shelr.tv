@@ -10,4 +10,8 @@ module ApplicationHelper
   def active_if(regex)
     'active' if request.env['PATH_INFO'] =~ regex
   end
+
+  def comment_url(comment)
+    record_url(comment.model.commentable, anchor: dom_id(comment))
+  end
 end

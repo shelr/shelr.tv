@@ -107,6 +107,21 @@ describe RecordsController do
         get :show, id: record.id.to_s, format: 'json'
       end
     end
+
+    context "when format is atom" do
+      let(:user)   { create :user }
+      let(:record) { create :record }
+
+      it "add record to assigns" do
+        get :show, id: record.id.to_s, format: 'atom'
+        assigns[:record].model.should eql(record)
+      end
+
+      it "should render show.atom.builder" do
+        get :show, id: record.id.to_s, format: 'atom'
+        response.should render_template :show
+      end
+    end
   end
 
   describe "POST create" do

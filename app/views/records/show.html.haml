@@ -1,3 +1,6 @@
+- content_for :head do
+  = auto_discovery_link_tag(:atom, record_url(@record, format: :atom), {:title => "Shelr.tv - new comments for \"#{@record.title}\""})
+
 - content_for :title do
   = @record.title
 

@@ -1,4 +1,5 @@
 require 'digest/md5'
+require 'securerandom'
 
 class User
 
@@ -17,6 +18,7 @@ class User
   field :google_oauth2_uid,  type: String,  unique: true, allow_nil: true
   field :open_id_name,       type: String,  unique: false
   field :open_id_uid,        type: String,  unique: true, allow_nil: true
+  field :atom_key,           type: String,  unique: true, allow_nil: true
   field :website,            type: String
   field :bitcoin,            type: String
   field :about,              type: String
@@ -56,9 +58,23 @@ class User
     self.nickname = 'noname' if nickname.blank?
   end
 
-  def comments_for_records(page = 1)
+  def comments_for_records
     comments = records.map(&:comments).flatten.compact.sort! { |a, b| b.updated_at <=> a.updated_at }
-    Kaminari.paginate_array(comments).page(page).per(20)
   end
 
+  def atom_key
+    if read_attribute(:atom_key).blank?
+      hex_size = 16
+      _atom_key = SecureRandom.hex(hex_size)
+
+      while User.where(atom_key: _atom_key).present?
+        _atom_key = SecureRandom.hex(hex_size)
+      end
+
+      self.atom_key = _atom_key
+      save
+    end
+
+    read_attribute(:atom_key)
+  end
 end

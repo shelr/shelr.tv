@@ -84,12 +84,12 @@ describe User do
 
       comments.reverse.should == subject.comments_for_records
     end
+  end
 
-    it "should add methods to array for kaminari" do
-      commentable = create(:record, user: subject)
-      commentable.comments << create(:comment)
-      comments = subject.comments_for_records
-      comments.should respond_to(:current_page)
+  describe "#atom_key" do
+    it "should generate new key if key does not exists" do
+      subject.atom_key = nil
+      subject.atom_key.should_not be_nil
     end
   end
 end

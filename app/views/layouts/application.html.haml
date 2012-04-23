@@ -12,6 +12,10 @@
     = javascript_include_tag 'application'
     = csrf_meta_tag
     = auto_discovery_link_tag :atom, "/records.atom", title: 'Shelr.tv - new records'
+    - if logged_in?
+      = auto_discovery_link_tag :atom,
+        dashboard_url(key: current_user.atom_key, format: :atom),
+        title: "Shelr.tv - new activity for #{current_user.nickname}"
     = yield :head
     = yield :meta
 
