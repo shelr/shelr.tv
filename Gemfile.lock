@@ -280,6 +280,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
     shoulda-matchers (1.0.0)
+    simple_form (2.0.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sitemap_generator (2.2.1)
     slop (2.4.4)
     spoon (0.0.1)
@@ -358,6 +361,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
+  simple_form
   sitemap_generator
   sunspot_matchers
   sunspot_mongo!

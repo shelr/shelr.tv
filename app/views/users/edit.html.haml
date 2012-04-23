@@ -1,36 +1,14 @@
 .info-block.profile
   %h1.aligned Profile
 
-  = form_for @user do |f|
-    %p
-      = f.label :nickname, 'Nickname'
-      = f.text_field :nickname
-      %span.desc
-        Displayed to other users
-    %p
-      = f.label :email, 'Email'
-      = f.text_field :email
-      %span.desc
-        Used for
-        %a{ href: 'http://gravatar.com' } Gravatar
-    %p
-      = f.label :website, 'Website'
-      = f.text_field :website, placeholder: 'http://shelr.tv/'
-    -# %p
-    -#   = f.label :bitcoin
-    -#   = f.text_field :bitcoin
-    -#   %span.desc
-    -#     %a{ href: 'http://bitcoin.com' } Bitcoin
-    -#     address for money donations
-    %p
-      = f.label :about, '&nbsp;'.html_safe
-      = f.text_area :about, :placeholder => 'Few lines about You', :rows => 4
-    %p
-      = f.label :api_key, 'API Key'
-      = f.text_field :api_key, disabled: true
-      %span.desc
-        shelr setup
-        = @user.api_key
-    .btn-group.submit
+  = simple_form_for @user do |f|
+    = f.input :nickname, hint: 'Displayed to other users'
+    = f.input :email, hint: 'Used for <a href="http://gravatar.com">Gravatar</a>'.html_safe
+    = f.input :website, placeholder: 'http://shelr.tv/'
+    -# = f.input :bitcoin, hint: '<a href="http://bitcoin.com">Bitcoin</a> address for money donations'.html_safe
+    = f.input :about, as: :text, label: false, placeholder: 'Few lines about You', input_html: { rows: 4 }
+    = f.input :api_key, label: 'API key', disabled: true, hint: "shelr setup #{@user.api_key}"
+
+    .form-actions
       = button_to_function 'Cancel', 'history.back()', :class => 'btn'
-      = f.submit 'Save', :class => 'btn btn-success'
+      = f.button :submit, 'Save', :class => 'btn-success'

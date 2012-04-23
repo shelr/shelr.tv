@@ -8,6 +8,7 @@ gem 'rdiscount'
 gem 'kaminari'
 
 gem 'draper'
+gem 'simple_form'
 
 gem 'omniauth'
 gem 'omniauth-github'

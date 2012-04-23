@@ -1,25 +1,13 @@
 .info-block
   %h1.aligned
     Editing shellcast
-  
-  = form_for @record do |f|
-    %p
-      = f.label :title
-      = f.text_field :title
-    %p
-      = f.label :related_url
-      = f.text_field :related_url
-    %p.description
-      = f.label :description, '&nbsp;'.html_safe
-      = f.text_area :description, :rows => 5
-    %p
-      = f.label :tags
-      = f.text_field :tags
-    %p
-      = f.label :private
-      = f.check_box :private
-    %p
-      .btn-group
-        = button_to_function 'Cancel', 'history.back()', class: 'btn'
-        = f.submit 'Save', class: 'btn btn-success'
 
+  = simple_form_for @record do |f|
+    = f.input :title
+    = f.input :related_url
+    = f.input :description, as: :text, label: false, input_html: { rows: 5 }, wrapper_html: { class: 'description' }
+    = f.input :tags
+    = f.input :private, as: :boolean
+    .form-actions
+      = button_to_function 'Cancel', 'history.back()', class: 'btn'
+      = f.button :submit, 'Save', class: 'btn-success'
