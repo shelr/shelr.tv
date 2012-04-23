@@ -63,6 +63,13 @@ steps_for :records do
     visit record_path @_records[title], access_key: @_records[title].access_key
   end
 
+  step "I change :title record title to :new_title" do |title, new_title|
+    step "I visit '#{title}' record page"
+    step "I click link 'edit'"
+    fill_in 'Title', with: new_title
+    step "I click button 'Save'"
+  end
+
   step "I am the owner of :title record" do |title|
     @_records[title].user = User.where(email: 'self@antono.info').first
     @_records[title].save

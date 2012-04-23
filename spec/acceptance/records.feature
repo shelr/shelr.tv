@@ -52,3 +52,8 @@ Feature: Records
     Then I should see "shelr manual"
     When I visit "shelr manual" record page
     Then I should see player for "shelr manual"
+
+  Scenario: owner can edit own record
+    Given I am the owner of "shelr manual" record
+    When I change "shelr manual" record title to "new shelr manual"
+    Then I should see "Record was succesfully updated."

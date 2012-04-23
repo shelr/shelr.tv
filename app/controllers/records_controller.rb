@@ -29,12 +29,9 @@ class RecordsController < ApplicationController
     user = User.where(api_key: params[:api_key]).first if params[:api_key].present?
     user = User.where(nickname: 'Anonymous').first unless user
 
-    @record = Record.new(JSON.parse(params[:record]))
-    # FIXME: wtf?
-    @record.user = user
+    @record = user.records.build(JSON.parse(params[:record]))
 
     if @record.save
-      user.records << @record
       record_full_url =
         if @record.private?
           record_path(@record, only_path: false, access_key: @record.access_key)
@@ -56,15 +53,12 @@ class RecordsController < ApplicationController
   end
 
   def update
-    if @record.editable_by?(current_user)
-      if @record.update_attributes(params[:record])
-        flash[:notice] = 'Record was succesfully updated.'
-      else
-        flash[:error] = 'You cannot edit this record.'
-      end
+    if @record.editable_by?(current_user) && @record.update_attributes(params[:record])
+      flash[:notice] = 'Record was succesfully updated.'
     else
       flash[:error] = 'You cannot edit this record.'
     end
+
     redirect_to @record
   end
 

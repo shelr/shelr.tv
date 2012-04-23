@@ -24,6 +24,10 @@ step "I click link :title" do |title|
   click_link title
 end
 
+step "I click button :title" do |title|
+  click_button title
+end
+
 step "I should see :text" do |text|
   page.should have_content text
 end
