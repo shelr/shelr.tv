@@ -33,6 +33,10 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'airbrake'
 
+# Markdown + Syntax highlighting
+gem 'redcarpet'
+gem 'albino'
+
 # Gems used only for assets and not required
 group :assets do
   gem 'rails-backbone'

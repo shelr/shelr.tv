@@ -3,11 +3,11 @@ class CommentDecorator < ApplicationDecorator
   decorates_association :user
 
   def body_link
-    h.link_to(h.sanitize(model.body), record_path)
+    h.link_to(body, record_path)
   end
 
   def body
-    h.sanitize(model.body)
+    h.markdown(model.body)
   end
 
   def updated_at
