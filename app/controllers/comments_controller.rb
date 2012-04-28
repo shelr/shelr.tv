@@ -18,6 +18,12 @@ class CommentsController < ApplicationController
     render json: @comment
   end
 
+  def preview
+    @data = params[:data] || ''
+
+    render layout: false
+  end
+
   private
 
   def commentable

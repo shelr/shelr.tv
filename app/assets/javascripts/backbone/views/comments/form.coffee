@@ -14,6 +14,7 @@ class Shelr.Views.Comments.Form extends Backbone.View
 
   displayComment: (e, data, status, xhr) =>
     @el.find('textarea').val("")
+    $('iframe.markItUpPreviewFrame').remove()
     tpl = $('.comment-template').clone()
     tpl.removeClass('hidden').removeClass('comment-template')
     tpl.find('.body').html(data.body)

@@ -36,6 +36,7 @@ gem 'airbrake'
 # Markdown + Syntax highlighting
 gem 'redcarpet'
 gem 'albino'
+gem 'rails_markitup', github: 'Gonzih/rails_markitup', branch: 'rails31'
 
 # Gems used only for assets and not required
 group :assets do

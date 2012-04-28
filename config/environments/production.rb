@@ -49,4 +49,6 @@ Shelr::Application.configure do
 
   # Generate digests for assets URLs.
   config.assets.digest = true
+
+  config.assets.precompile += ['markitup_preview.css']
 end

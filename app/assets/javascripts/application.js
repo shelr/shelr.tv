@@ -10,5 +10,6 @@
 //= require slider
 //= require tty
 //= require bootstrap
+//= require markitup
 //= require_tree .
 

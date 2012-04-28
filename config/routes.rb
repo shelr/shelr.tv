@@ -19,6 +19,8 @@ Shelr::Application.routes.draw do
   match '/about'     => 'home#about',     as: 'about'
   match '/dashboard' => 'home#dashboard', as: 'dashboard'
 
+  match '/comments/preview' => 'comments#preview'
+
   match '/opensearch.xml'  => 'home#opensearch', as: 'opensearch'
 
   root :to => "home#landing"

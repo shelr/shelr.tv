@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/Gonzih/rails_markitup.git
+  revision: d5e62107b0f1e0b9bb506cf53574c7520fb8eb8f
+  branch: rails31
+  specs:
+    rails_markitup (0.0.3)
+      albino
+      rails (>= 3.1.0)
+      redcarpet
+
+GIT
   remote: git://github.com/antono/guard-ctags-bundler.git
   revision: df7f4e65c7d17b33e05204dae86c786baf58a3a8
   specs:
@@ -373,6 +383,7 @@ DEPENDENCIES
   pry-nav
   rails (~> 3.2.1)
   rails-backbone
+  rails_markitup!
   rake
   rdiscount
   redcarpet
