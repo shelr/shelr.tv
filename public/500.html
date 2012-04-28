@@ -42,13 +42,16 @@
 				overflow: hidden;
 				   -moz-animation: typing 3s steps(18, end), blink-caret 1s cubic-bezier(1,0,0,1) infinite alternate;
 				-webkit-animation: typing 3s steps(18, end), blink-caret 1s cubic-bezier(1,0,0,1) infinite alternate;
+				     -o-animation: typing 3s steps(18, end), blink-caret 1s cubic-bezier(1,0,0,1) infinite alternate;
 				        animation: typing 3s steps(18, end), blink-caret 1s cubic-bezier(1,0,0,1) infinite alternate;
 			}
 			   @-moz-keyframes typing { from { width: 0; } }
 			@-webkit-keyframes typing { from { width: 0; } }
+			     @-o-keyframes typing { from { width: 0; } }
 			        @keyframes typing { from { width: 0; } }
 			   @-moz-keyframes blink-caret { 50% { border-color: transparent; } }
 			@-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+			     @-o-keyframes blink-caret { 50% { border-color: transparent; } }
 			        @keyframes blink-caret { 50% { border-color: transparent; } }
 		</style>
 	</head>
