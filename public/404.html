@@ -1,26 +1,74 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
+	<head>
+		<meta charset='utf-8'/>
+		<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
+		<style type="text/css">
+			body {
+				color: white;
+				background-color: black;
+			}
+			.cursor {
+				-moz-animation-name: blink;
+				-moz-animation-duration: 1.5s;
+				-moz-animation-iteration-count: infinite;
+				-moz-animation-timing-function: cubic-bezier(1,0,0,1);
+			}
+			html, body, #wrapper {
+				height:100%;
+				margin: 0;
+				padding: 0;
+				border: none;
+				text-align: center;
+				font-size: 24pt;
+				font-family: 'Inconsolata',monospace;
+				font-weight: normal;
+			}
+			#wrapper {
+				margin: 0 auto;
+				text-align: left;
+				vertical-align: middle;
+			}
+			.cow {
+				font-family: 'Inconsolata',monospace;
+				font-size: 24pt;
+			}
+			.description {
+				border-right: .5em solid;
+				border-right: 1ch solid;
+				width: 10em;
+				width: 20ch;
+				white-space: nowrap;
+				overflow: hidden;
+				   -moz-animation: typing 3s steps(20, end), blink-caret 1s cubic-bezier(1,0,0,1) infinite alternate;
+				-webkit-animation: typing 3s steps(20, end), blink-caret 1s cubic-bezier(1,0,0,1) infinite alternate;
+				        animation: typing 3s steps(20, end), blink-caret 1s cubic-bezier(1,0,0,1) infinite alternate;
+			}
+                           @-moz-keyframes typing { from { width: 0; } }
+                        @-webkit-keyframes typing { from { width: 0; } }
+                                @keyframes typing { from { width: 0; } }
+                           @-moz-keyframes blink-caret { 50% { border-color: transparent; } }
+                        @-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
+                                @keyframes blink-caret { 50% { border-color: transparent; } }
+		</style>
+	</head>
+	<body>
+		<table id="wrapper">
+			<tr>
+				<td>
+<pre class="cow">
+ _______________ 
+&lt; 404 Not Found &gt;
+ --------------- 
+        \   ^__^
+         \  (..)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
 
-<body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
-  </div>
-</body>
+</pre>
+				<div class="description">Page does not exist.</div>
+			</tr>
+		</table>
+	</body>
 </html>
